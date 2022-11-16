@@ -277,11 +277,14 @@ h2 {
 	.main-wraper {
 		margin-top: 44px;
 	}
-	.table {
+	.operations {
 		grid-template-columns: 1fr;
 	}
 	.sums {
 		margin-bottom: 40px;
+	}
+	.buttons {
+		grid-template-columns: 1fr 1fr;
 	}
 }
 
