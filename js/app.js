@@ -23,7 +23,7 @@ inputOfPercent.oninput = function() {
 }
 
 billInput.oninput = function() {
-    this.value = this.value.substr(0, 5);
+    this.value = this.value.substr(0, 6);
 }
 
 inputOfPeople.oninput = function() {
