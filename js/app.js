@@ -115,10 +115,10 @@ resetBtn.addEventListener('click', resetResults);
 
 
 // GET RESULTS
-    
-
 
 function getResults(bill,person) {  
+    // GIVE VARIABLES THEIR PROPERTIES
+
     bill = billInput.value;
 
     if(percent == false) {
@@ -136,52 +136,33 @@ function getResults(bill,person) {
 
     person = numberOfPeople.value;
 
-    if(bill <= 0 || bill.length < 0 && person <= 0 || person.length < 0 && percent <= 0 || percent == false || percent.length < 0) {
-        warnBill.style.display = "inline-block";
-        warnTip.style.display = "inline-block";
-        warnPeople.style.display = "inline-block";
-        return false;
-    }
-    if(bill <= 0 || bill.length < 0 && person <= 0 || person.length < 0) {
-        warnBill.style.display = "inline-block";
-        warnPeople.style.display = "inline-block";
-        return false;
-    }
-    if(bill <= 0 || bill.length < 0 && percent <= 0 || percent == false || percent.length < 0) {
-        warnBill.style.display = "inline-block";
-        warnTip.style.display = "inline-block";
-        return false;
-    }
-    if(person <= 0 || person.length < 0 && percent <= 0 || percent == false || percent.length < 0) {
-        warnPeople.style.display = "inline-block";
-        warnTip.style.display = "inline-block";
-        return false;
-    }
-    if(bill <= 0 || bill.length < 0) {
-        warnBill.style.display = "inline-block";
-        warnPeople.style.display = "inline-block";
-        return false;
-    }
-    if(percent <= 0 || percent == false || percent.length < 0) {
-        warnTip.style.display = "inline-block";
-        return false;
-    }
-    if(person <= 0 || person.length < 0) {
-        warnPeople.style.display = "inline-block";
-        return false;
+    // CHECK VALUES: IF SOMETHING IS WRONG OUTPUT WARN TEXT
+
+    let errorsSign = [[bill, warnBill],[percent, warnTip],[person, warnPeople]];
+
+    for(let i = 0; i < errorsSign.length; i++) {
+        for(let j = 0; j < errorsSign[i].length; j++) {
+            if(errorsSign[i][0] <= 0 || errorsSign[i][0] == "" || errorsSign[i][0] == false) {
+                errorsSign[i][1].style.display = "inline-block"
+                if(i >= errorsSign.length) {
+                    return false;
+                }
+            } 
+        }
     }
     
-    // const errorsSign = [{inputOfPercent: warnTip},{inputOfPeople: warnPeople},{percent: warnTip}];
-
+    // ROUND OFF VALUES
 
     let amount = bill * (percent/100) / person;
     let total = bill * (percent/100);
 
-    amount = Math.round(amount * 100) / 10;
-    total = Math.round(total * 100) / 10;
+    amount = Math.round(amount * 10) / 10;
+    total = Math.round(total * 10) / 10;
 
     document.getElementById('amount').textContent = "$" + amount;
     document.getElementById('total').textContent= "$" + total;
+
+    // RRESET VALUES AT THE END OF THE FUNCTION
 
     if(true) {
         warnBill.style.display = "none";
@@ -189,9 +170,19 @@ function getResults(bill,person) {
         warnPeople.style.display = "none";
     }
 
+    percentButtons.forEach((btn) => {
+        btn.style.background = "#00474B";
+        btn.style.border = "2px #00474B solid"
+        btn.style.color = "#FFFFFF";
+    });
+
+    billInput.value = "";
+    inputOfPercent.value = "";
+    numberOfPeople.value = "";
+
 }
 
-// RESET RESULTS
+// RESET VALUES
 
 function resetResults() {
     document.getElementById('amount').textContent = "$0.00" 
