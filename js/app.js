@@ -193,8 +193,14 @@ function getResults(bill,person) {
     totalSum.textContent= "$" + total;
 
     // RRESET VALUES AT THE END OF THE FUNCTION
+    
+    if(total > 0) {
+        billInput.value = "";
+        inputOfPercent.value = "";
+        percent = "";
+        numberOfPeople.value = "";
+    }
 
-  
     warnBill.style.display = "none";
     warnTip.style.display = "none";
     warnPeople.style.display = "none";
@@ -205,11 +211,6 @@ function getResults(bill,person) {
         btn.style.border = "2px #00474B solid"
         btn.style.color = "#FFFFFF";
     });
-
-    billInput.value = "";
-    inputOfPercent.value = "";
-    percent = "";
-    numberOfPeople.value = "";
 
     billInput.style.border = "2px #F3F9FA solid";
     inputOfPercent.style.border = "2px #F3F9FA solid";
