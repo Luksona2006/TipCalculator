@@ -142,7 +142,7 @@ function getResults(bill,person) {
 
     for(let i = 0; i < errorsSign.length; i++) {
         for(let j = 0; j < errorsSign[i].length; j++) {
-            if(errorsSign[i][0] <= 0 || errorsSign[i][0] == "" || errorsSign[i][0] == false) {
+            if(errorsSign[i][0] <= 0 || errorsSign[i][0] == "") {
                 errorsSign[i][1].style.display = "inline-block"
                 if(i >= errorsSign.length) {
                     return false;
@@ -180,6 +180,10 @@ function getResults(bill,person) {
     inputOfPercent.value = "";
     numberOfPeople.value = "";
 
+    billInput.style.border = "2px #F3F9FA solid";
+    inputOfPercent.style.border = "2px #F3F9FA solid";
+    numberOfPeople.style.border = "2px #F3F9FA solid";
+
 }
 
 // RESET VALUES
@@ -194,7 +198,7 @@ function resetResults() {
         btn.style.color = "#FFFFFF";
     });
 
-     warnBill.style.display = "none";
+    warnBill.style.display = "none";
     warnTip.style.display = "none";
     warnPeople.style.display = "none";
  }
