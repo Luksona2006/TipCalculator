@@ -165,7 +165,7 @@ function getResults(bill,person) {
 
     // SET AMOUNT / TOTAL
 
-    if(total == 0) {
+    if(total == 0 || amount == Infinity) {
         amountSum.textContent = "$0.00";
         totalSum.textContent= "$0.00";
         return false
