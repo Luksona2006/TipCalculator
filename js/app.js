@@ -30,7 +30,23 @@ inputOfPeople.oninput = function() {
     this.value = this.value.substr(0, 2);
 }
 
-// Math Floor
+// FIRST NUMBER SHOULDN'T EQUAL TO 0
+
+inputOfPercent.onkeyup = function() {
+    if(this.value[0] == 0) {
+        return this.value = 0;
+    }
+}
+inputOfPeople.onkeyup = function() {
+    if(this.value[0] == 0) {
+        return this.value = 0;
+    }
+}
+billInput.onkeyup = function() {
+    if(this.value[0] == 0) {
+        return this.value = 0;
+    }
+}
 
 // BILL INPUT
 
