@@ -141,18 +141,20 @@ function getResults(bill,person) {
 
     // // CHECK VALUES: IF SOMETHING IS WRONG OUTPUT WARN TEXT
 
-    // let errorsSign = [[bill, warnBill],[percent, warnTip],[person, warnPeople]];
+    let errorsSign = [[bill, warnBill],[percent, warnTip],[person, warnPeople]];
 
-    // for(let i = 0; i < errorsSign.length; i++) {
-    //     for(let j = 0; j < errorsSign[i].length; j++) {
-    //         if(errorsSign[i][0] <= 0 || errorsSign[i][0] == "") {
-    //             errorsSign[i][1].style.display = "inline-block"
-    //             if(i >= errorsSign.length) {
-    //                 return false;
-    //             }
-    //         } 
-    //     }
-    // }
+    for(let i = 0; i < errorsSign.length; i++) {
+        for(let j = 0; j < errorsSign[i].length; j++) {
+            if(errorsSign[i][0] <= 0 || errorsSign[i][0] == "") {
+                errorsSign[i][1].style.display = "inline-block"
+                if(i >= errorsSign.length) {
+                    return false;
+                }
+            } else {
+                errorsSign[i][1].style.display = "none"
+            }
+        }
+    }
 
     
     // ROUND OFF VALUES
