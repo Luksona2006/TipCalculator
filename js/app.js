@@ -160,8 +160,8 @@ function getResults(bill,person) {
     let amount = bill * (percent/100) / person;
     let total = bill * (percent/100);
 
-    amount = Math.round(amount * 10) / 10;
-    total = Math.round(total * 10) / 10;
+    amount = Math.round(amount * 100) / 100;
+    total = Math.round(total * 100) / 100;
 
     // SET AMOUNT / TOTAL
 
