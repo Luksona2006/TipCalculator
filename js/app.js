@@ -206,8 +206,13 @@ function getResults(bill,person) {
         btn.style.color = "#FFFFFF";
     });
 
+    console.log(bill);
+    console.log(percent);
+    console.log(person);
+
     billInput.value = "";
     inputOfPercent.value = "";
+    percent = "";
     numberOfPeople.value = "";
 
     billInput.style.border = "2px #F3F9FA solid";
