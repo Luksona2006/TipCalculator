@@ -13,6 +13,9 @@ let resetBtn = document.getElementById('reset');
 
 let generate = document.getElementById('generate');
 
+let amountSum = document.getElementById('amount');
+let totalSum = document.getElementById('total');
+
 // LIMIT
 
 inputOfPercent.oninput = function() {
@@ -136,20 +139,21 @@ function getResults(bill,person) {
 
     person = numberOfPeople.value;
 
-    // CHECK VALUES: IF SOMETHING IS WRONG OUTPUT WARN TEXT
+    // // CHECK VALUES: IF SOMETHING IS WRONG OUTPUT WARN TEXT
 
-    let errorsSign = [[bill, warnBill],[percent, warnTip],[person, warnPeople]];
+    // let errorsSign = [[bill, warnBill],[percent, warnTip],[person, warnPeople]];
 
-    for(let i = 0; i < errorsSign.length; i++) {
-        for(let j = 0; j < errorsSign[i].length; j++) {
-            if(errorsSign[i][0] <= 0 || errorsSign[i][0] == "") {
-                errorsSign[i][1].style.display = "inline-block"
-                if(i >= errorsSign.length) {
-                    return false;
-                }
-            } 
-        }
-    }
+    // for(let i = 0; i < errorsSign.length; i++) {
+    //     for(let j = 0; j < errorsSign[i].length; j++) {
+    //         if(errorsSign[i][0] <= 0 || errorsSign[i][0] == "") {
+    //             errorsSign[i][1].style.display = "inline-block"
+    //             if(i >= errorsSign.length) {
+    //                 return false;
+    //             }
+    //         } 
+    //     }
+    // }
+
     
     // ROUND OFF VALUES
 
@@ -159,16 +163,24 @@ function getResults(bill,person) {
     amount = Math.round(amount * 10) / 10;
     total = Math.round(total * 10) / 10;
 
-    document.getElementById('amount').textContent = "$" + amount;
-    document.getElementById('total').textContent= "$" + total;
+    // SET AMOUNT / TOTAL
+
+    if(total == 0) {
+        amountSum.textContent = "$0.00";
+        totalSum.textContent= "$0.00";
+        return false
+    }
+
+    amountSum.textContent = "$" + amount;
+    totalSum.textContent= "$" + total;
 
     // RRESET VALUES AT THE END OF THE FUNCTION
 
-    if(true) {
-        warnBill.style.display = "none";
-        warnTip.style.display = "none";
-        warnPeople.style.display = "none";
-    }
+  
+    warnBill.style.display = "none";
+    warnTip.style.display = "none";
+    warnPeople.style.display = "none";
+    
 
     percentButtons.forEach((btn) => {
         btn.style.background = "#00474B";
@@ -183,7 +195,6 @@ function getResults(bill,person) {
     billInput.style.border = "2px #F3F9FA solid";
     inputOfPercent.style.border = "2px #F3F9FA solid";
     numberOfPeople.style.border = "2px #F3F9FA solid";
-
 }
 
 // RESET VALUES
